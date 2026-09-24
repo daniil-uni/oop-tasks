@@ -1,0 +1,14 @@
+public class Elephant extends ZooAnimal {
+	public Elephant(String species, double weight) {
+		super(species, weight);
+	}
+
+	@Override
+	public void sound() {
+		trumpet();
+	}
+
+	private void trumpet() {
+		System.out.println("Слон трубит");
+	}
+}

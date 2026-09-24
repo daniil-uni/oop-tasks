@@ -1,0 +1,14 @@
+public class Penguin extends ZooAnimal {
+	public Penguin(String species, double weight) {
+		super(species, weight);
+	}
+
+	@Override
+	public void sound() {
+		swim();
+	}
+
+	private void swim() {
+		System.out.println("Пингвин плавает");
+	}
+}

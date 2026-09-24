@@ -1,0 +1,14 @@
+public class Lion extends ZooAnimal {
+	public Lion(String species, double weight) {
+		super(species, weight);
+	}
+
+	@Override
+	public void sound() {
+		roar();
+	}
+
+	private void roar() {
+		System.out.println("Лев рычит");
+	}
+}

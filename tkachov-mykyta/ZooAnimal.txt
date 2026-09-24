@@ -1,0 +1,31 @@
+//Вариант 2
+
+public class ZooAnimal {
+	private static final String species;
+	private static final double weight;
+
+	public ZooAnimal(String species, double weight) {
+		this.species = species;
+		this.weight = weight;
+	}
+
+	public String getSpecies() {
+		return species;
+	}
+
+	public void setSpecies(String newSpecies) {
+		species = newSpecies;
+	}
+
+	public String getWeight() {
+		return weight;
+	}
+
+	public String setWeight(double newWeight) {
+		weight = newWeight;
+	}
+
+	public void sound() {
+		System.out.println("Животное издает звук");
+	}
+}

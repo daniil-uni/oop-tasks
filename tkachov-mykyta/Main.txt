@@ -1,0 +1,14 @@
+// Вариант 2
+
+public Main {
+	public static void main(String[] args) {
+		ZooAnimal lion = new Lion("species1", 130.5);
+		lion.sound();
+
+		Elephant elephant = new Elephant("species22", 500);
+		elephant.sound();
+
+		ZooAnimal penguin = new Penguin("species333", 95.7);
+		penguin.sound();
+	}
+}
