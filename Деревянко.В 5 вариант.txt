@@ -1,0 +1,4 @@
+class Smartphone
+public:
+     void call()
+    cout<<"Телефон звонит"<< endl;
