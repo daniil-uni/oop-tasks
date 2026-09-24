@@ -1,0 +1,77 @@
+Шахов Андрей 
+Вариант 1
+
+Class Vehicle:
+	def __init__(_speed, _color):
+		self._speed = _speed
+		self._color = _color
+		return 0
+
+	def set_speed(self):
+		self._speed = _speed
+		return(self)
+
+	def set_color(self):
+		self._color = _color
+		return(self)
+
+	def get_speed(self):
+		print(self._speed)
+		return 0
+
+	def get_color(self):
+		print(self._color)
+		return 0
+
+Class Car(Vehicle):
+	def __init__(_speed, _color):
+		self._speed = _speed
+		self._color = _color
+		return 0
+
+	def drive():
+		print("Машина едет")
+		return 0
+
+	def move():
+		print("Машина двигается")
+		return 0
+
+Class Bike(Vehicle):
+	def __init__(_speed, _color):
+		self._speed = _speed
+		self._color = _color
+		return 0
+
+	def pedal():
+		print("Велосипед крутит педали")
+		return 0
+
+	def move():
+		print("Велосипед едит")
+		return 0
+
+Class Boat(Vehicle):
+	def __init__(_speed, _color):
+		self._speed = _speed
+		self._color = _color
+		return 0
+
+	def sail():
+		print("Лодка плывет")
+		return 0
+
+	def move():
+		print("Лодка плывет")
+		return 0
+
+Car.set_speed = 120
+Bike.set_speed = 20
+Boat.set_speed = 40
+Car.set_color = "Зеленый"
+Bike.set_color ="Красный"
+Boat.set_color = "Желтый"
+
+Car.move
+Bike.move
+Boat.move
