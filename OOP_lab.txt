@@ -1,0 +1,64 @@
+Class Device():
+
+    __init__(self, name, battery_life):
+        self._name = name
+        self._battery_life = battery_life
+
+        def get_name(self):
+            return name
+
+        def get_battery_life(self):
+            return battery_life
+
+        def set_name(self, name):
+            self._name = name 
+
+        def set_battery_life(self, battery_life):
+            self._battery_life = battery_life
+
+Class Smartphone(Device):
+
+    def call(self):
+        print("Телефон звонит")
+
+    def use(self):
+        if self.set_battery_life >= 10
+            print("Телефон используется, оставшийся заряд {_battery_life}")
+            _battery_life -= 10
+        else: 
+            print("Недостаточно заряда")
+
+
+Class Laptop(Device):
+
+    def compile_code(self):
+        print("Ноутбук компилирует код")
+    
+    def use(self):
+        if self.set_battery_life >= 10
+            print("Ноутбук используется, оставшийся заряд {_battery_life}")
+            _battery_life -= 10
+        else: 
+            print("Недостаточно заряда")
+
+Class Tablet(Device):
+
+    def draw(self):
+        print("Планшет используется для рисования")
+        
+    def use(self):
+        if self.set_battery_life >= 10
+            print("Планшет используется, оставшийся заряд {_battery_life}")
+            _battery_life -= 10
+        else: 
+            print("Недостаточно заряда")
+
+list = (Smartphone(Samsung, 8), Laptop(HP, 50), Tablet(Apple, 30))
+
+Smartphone.call()
+Laptop.compile_code()
+Tablet.draw()
+
+for val in list:
+    val.use()
+
