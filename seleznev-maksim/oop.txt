@@ -1,6 +1,6 @@
 Вариант 1
 class Vehicle:
-     def __init__(self, speed,color):
+     def __init__(self, speed, color):
      self._speed = speed
      self._color = color
 
