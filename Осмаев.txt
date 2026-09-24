@@ -1,0 +1,71 @@
+# 1. Создайте класс Appliance с полями _brand и _power. Реализуйте геттеры и сеттеры для этих полей.
+class Appliance:
+    def __init__(self, brand, power):
+        self._brand = brand
+        self._power = power
+
+    def get_brand(self):
+        return self._brand
+
+    def set_brand(self, brand):
+        self._brand = brand
+
+    def get_power(self):
+        return self._power
+
+    def set_power(self, power):
+        self.power = power
+
+
+# 2. Создайте подклассы WashingMachine, Refrigerator и Microwave.
+class WashingMachine(Appliance):
+    def __init__(self, brand, power):
+        super().__init__(brand, power)
+
+    def wash(self):
+        print("Стиральная машина стирает")
+
+    # 3. метод operate()
+    def operate(self):
+        print("Стиральная машина стирает вещи")
+
+
+class Refrigerator(Appliance):
+    def __init__(self, brand, power):
+        super().__init__(brand, power)
+
+    def cool(self):
+        print("Холодильник охлаждает")
+
+    # 3. метод operate()
+    def operate(self):
+        print("Холодильник поддерживает холод")
+
+
+class Microwave(Appliance):
+    def __init__(self, brand, power):
+        super().__init__(brand, power)
+
+    def heat(self):
+        print("Микроволновка разогревает")
+
+    # 3. метод operate()
+    def operate(self):
+        print("Микроволновка разогревает обед")
+
+
+# Создайте список с объектами всех трёх классов и вызовите operate() для каждого объекта
+wash_mashine = WashingMachine("Samsung", 2000)
+refrigerator = Refrigerator("LG", 350)
+microwave = Microwave("Bosch", 1000)
+
+devices = [wash_mashine, refrigerator, microwave]
+
+for item in devices:
+    item.operate()
+
+# проверка методов
+wash_mashine.wash()
+refrigerator.cool()
+microwave.heat()
+print(wash_mashine.get_power)
