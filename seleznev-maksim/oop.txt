@@ -1,0 +1,44 @@
+Вариант 1
+class Vehicle:
+     def __init__(self, speed,color):
+     self._speed = speed
+     self._color = color
+
+     def set_speed(self, speed):
+     self._speed = speed
+
+     def set_color(self, color):
+     self._color = color
+
+     def get_speed(self):
+     return self._speed
+
+     def get_color(self):
+     return self._color
+
+class Car(Vehicle):
+     def drive(self):
+     print("Машина едет")
+     def move(self):
+     print("Машина двигается")
+
+class Bike(Vehicle):
+    def pedal(self):
+    print ("Велосипед крутит педали")
+    def move(self):
+    print("Велосипед едет")
+
+class Boat(Vehicle):
+    def sail(self):
+    print("Лодка плывёт")
+    def move(self):
+    print("Лодка плывёт")
+
+car = Car(100, "Зеленый")
+bike = Bike(20, "Фиолетовый")
+boat = Boat(30, "Черный")
+
+car.move()
+bike.move()
+boat.move()
+
