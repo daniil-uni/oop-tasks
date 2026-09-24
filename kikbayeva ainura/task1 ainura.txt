@@ -1,0 +1,49 @@
+class Appliance:
+	def __init__(self, brand, power):
+		self._brand = brand
+		self.power = power 
+	
+	def getBrand(self):
+       		return self._brand 
+
+   	def setBrand(self, _brand):
+		print(f"Бренд {self._brand} установлен")
+	
+	def getPower(self):
+		return self._power
+	
+	def setPower(self):
+		print(f"Мощность {self._power} установлена")
+
+	def operate(self):
+		pass
+
+class WashingMachine(Appliance):
+	def __wash(self):
+		print("Стиральная машина стирает")
+
+	def operate(self):
+		self.__wash()
+
+class Refrigerator(Appliance):
+	def __cool(self):
+		print("Холодильник охлаждает")
+
+	def operate(self):
+		self.__cool()
+
+class Microwave(Appliance):
+	def __heat(self):
+		print("Микроволновка разогревает еду")
+
+	def operate(self):
+		self.__heat()
+
+
+washingMachine1 = WashingMachine("Samsung", 3000)
+refrigerator1 = Refrigerator("LG", 2000)
+microwave1 = Microwave("Samsung", 800)
+
+washingMachine1.operate()
+refrigerator1.operate()
+mocrowave1.operate() 
