@@ -1,0 +1,98 @@
+class Book:
+	def __init__(self, name, author):
+		self.name = name
+		self.author = author
+
+	def display_info(self):
+		print(f"Название: {self.title}, автор: {self.author}")
+
+class Library:
+	def __init__(self):
+		self.books = []
+
+	def lend_book(self, book):
+		print(f"Книга '{book.name}' выдана читателю.")
+
+	def add_book(self, book):
+		self.books.append(book)
+		print(f"Книга '{book.name}' добавлена в библиотеку.")
+
+	def show_books(self):
+		print("Книги в библиотеке:")
+		for book in self.books:
+			book.display_info()
+
+
+
+book1 = Book("Война и мир", "Л.Н.Толстой")
+book2 = Book("Мастер и Маргарита", "М.Булгаков")
+library = Library()
+library.add_book(book1)
+library.add_book(book2)
+
+library.show_books()
+
+library.lend_book(book1)
+
+library.show_books()
+
+#task2
+
+class Device:
+	def __init__(self, model, power):
+		self.__model = model
+		self._power = power 
+
+	def turn_on(self):
+		print(f"Устройство {self.__model} включено.")
+
+	def get_model(self):
+		return self.__model
+
+
+class Computer(Device):
+	def display_info(self):
+		print(f"Компьютер: {self.get_model()}, мощность: {self._power} Вт")
+
+	def calculate_time(self):
+		return self._power * 
+
+
+class Printer(Device):
+	def display_info(self):
+		print(f"Принтер: {self.get_model()}, скорость печати: {self._power}")
+
+	def calculate_time(self):
+		return self._power / 2
+
+
+class OfficeDevice(Computer, Printer):
+	def __init__(self, model, power):
+		super().__init__(model, power)
+
+	def display_info(self):
+		print(f"Модель: {self.get_model()}, мощность: {self._power} Вт")
+
+	def calculate_time(self):
+		return self._powerz
+
+
+computer = Computer("HP", 100)
+printer = Printer("Canon", 80)
+office_device = OfficeDevice("Office", 50)
+
+computer.display_info()
+print("Мощность после расчета:", computer.calculate_time())
+
+printer.display_info()
+print("Скорость печати:", printer.calculate_time())
+
+computer.turn_on()
+
+device = ComputerPrinter("HP-Printer", 100)
+
+device.display_info()
+print("Результат calculate_time():", device.calculate_time())
+
+print(ComputerPrinter.mro())
+
