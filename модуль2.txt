@@ -1,0 +1,60 @@
+#task1
+class LearningPlatform:
+	def __init__(self,name):
+		self.name=name
+		self.courses=[]
+	def add_course(self,course):
+		self.courses.append(course)
+		 
+class Course 
+	def __init__(self,name,duration):
+		self.name=name 
+		self.duration=duration
+course_1 = Course("math","12 month")
+course_2 = Course("engl","7 month")
+learningPlatform = LearningPlatform("samga")
+learningPlatform.add_course(course_1)
+learningPlatform.add_course(course_2)
+
+#task2
+class Employee 
+	def __init__(self,expirience,name):
+		self.__expirience=expirience
+		self._name=name
+	def get_expirience(self):
+		return self.__expirience
+	def display_info():
+		print()
+	def calculate_workload(self):
+		pass
+
+
+class Teacher(Employee):
+	def calculate_bonus(self, bonus):
+		self.bonus = bonus * 0.1 
+	def calculate_workload(self, workload):
+		self.workload = workload * 4
+		
+class Researcher(Employee):
+	def calculate_bonus(self, bonus):
+		self.bonus = bonus * 0.15
+	def calculate_workload(self, workload):
+		self.workload = workload / 2
+ 
+class Proferssor(Researcher,Teacher):
+	pass
+
+teacher1 = Teacher("4","anna")
+researcher1 = Researcher("3","david")
+professor1 = Professor("7","nura")
+
+
+
+
+
+	
+
+
+
+
+		
