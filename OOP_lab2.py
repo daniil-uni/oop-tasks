@@ -81,9 +81,3 @@ class Multimedia(Audio, Video):
 
 media = Multimedia(120, "Песня", 0)
 media.play()
-
-
-	
-
-
-		
