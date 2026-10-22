@@ -1,0 +1,11 @@
+from Machine import Machine
+
+class Dryer(Machine):
+	def __init__(self, capacity, model):
+		super().__init__(capacity, model)
+
+	def calculate_load(self):
+		return self.__capacity * 3
+
+	def calculate_energy(self):
+		return self.__capacity * 5
