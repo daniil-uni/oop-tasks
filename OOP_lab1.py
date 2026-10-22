@@ -54,3 +54,4 @@ objects = [teacher, programmer, doctor]
 
 for object in objects:
     object.work()
+	
