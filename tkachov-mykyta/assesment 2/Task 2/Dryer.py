@@ -5,7 +5,7 @@ class Dryer(Machine):
 		super().__init__(capacity, model)
 
 	def calculate_load(self):
-		return self.__capacity * 3
+		return self._Machine__capacity * 3
 
 	def calculate_energy(self):
-		return self.__capacity * 5
+		return self._Machine__capacity * 5

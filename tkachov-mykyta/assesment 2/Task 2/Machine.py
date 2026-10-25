@@ -4,7 +4,7 @@ class Machine:
 		self._model = model
 
 	def display_info(self):
-		print("Model: ", model, ", capacity: ", capacity)
+		print("Model: ", self._model, ", capacity: ", self.__capacity)
 
 	def calculate_load(self):
 		pass

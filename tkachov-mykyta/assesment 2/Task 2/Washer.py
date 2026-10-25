@@ -5,7 +5,7 @@ class Washer(Machine):
 		super().__init__(capacity, model)
 
 	def calculate_load(self):
-		return self.__capacity * 2
+		return self._Machine__capacity * 2
 
 	def calculate_energy(self):
-		return self.__capacity / 2
+		return self._Machine__capacity / 2
