@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (
 )
 
 
-# 1. Строитель кнопок
+#  Строитель кнопок
 class ButtonBuilder:
 
     def build(self, text, width, height, color, enabled):
@@ -19,7 +19,7 @@ class ButtonBuilder:
         return button
 
 
-# 2. Строитель полей ввода
+#  Строитель полей ввода
 class LineEditBuilder:
 
     def build(self, text, placeholder, width, read_only):
@@ -32,7 +32,7 @@ class LineEditBuilder:
         return field
 
 
-# 3. Строитель выпадающих списков
+# Строитель выпадающих списков
 class ComboBoxBuilder:
 
     def build(self, items, current_index, width, enabled):
@@ -45,7 +45,7 @@ class ComboBoxBuilder:
         return combo
 
 
-# 4. Строитель флажков
+# Строитель флажков
 class CheckBoxBuilder:
 
     def build(self, text, checked, enabled):
@@ -56,7 +56,7 @@ class CheckBoxBuilder:
         return checkbox
 
 
-# 5. Директор
+#  Директор
 class WidgetDirector:
 
     def __init__(self, builder):
@@ -77,7 +77,7 @@ class MainWindow(QWidget):
 
         self.layout = QVBoxLayout(self)
 
-        # Кнопки создания виджетов
+        
         button1 = QPushButton("Создать кнопку")
         button2 = QPushButton("Создать поле ввода")
         button3 = QPushButton("Создать список")
@@ -88,19 +88,18 @@ class MainWindow(QWidget):
         self.layout.addWidget(button3)
         self.layout.addWidget(button4)
 
-        # Создаём строителей
+        
         self.button_builder = ButtonBuilder()
         self.line_builder = LineEditBuilder()
         self.combo_builder = ComboBoxBuilder()
         self.checkbox_builder = CheckBoxBuilder()
 
-        # Создаём директора
+        
         self.button_director = WidgetDirector(self.button_builder)
         self.line_director = WidgetDirector(self.line_builder)
         self.combo_director = WidgetDirector(self.combo_builder)
         self.checkbox_director = WidgetDirector(self.checkbox_builder)
 
-        # Подключаем действия
         button1.clicked.connect(self.create_button)
         button2.clicked.connect(self.create_line)
         button3.clicked.connect(self.create_combo)
