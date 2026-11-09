@@ -13,16 +13,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class WeatherViewFactory {
     private final WeatherProvider openMeteoProvider;
-    private final WeatherProvider openWeatherProvider;
+    private final WeatherProvider metNorwayProvider;
     private final WeatherResponseMapper responseMapper;
 
     public WeatherViewFactory(
             @Qualifier("openMeteoProvider") WeatherProvider openMeteoProvider,
-            @Qualifier("openWeatherProvider") WeatherProvider openWeatherProvider,
+            @Qualifier("metNorwayProvider") WeatherProvider metNorwayProvider,
             WeatherResponseMapper responseMapper
     ) {
         this.openMeteoProvider = openMeteoProvider;
-        this.openWeatherProvider = openWeatherProvider;
+        this.metNorwayProvider = metNorwayProvider;
         this.responseMapper = responseMapper;
     }
 
@@ -32,7 +32,7 @@ public class WeatherViewFactory {
     ) {
         WeatherProvider provider = switch (source) {
             case OPEN_METEO -> openMeteoProvider;
-            case OPEN_WEATHER -> openWeatherProvider;
+            case MET_NORWAY -> metNorwayProvider;
         };
 
         return switch (viewType) {

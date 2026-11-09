@@ -15,4 +15,16 @@ public class ApiClient {
                 .retrieve()
                 .body(responseType);
     }
+
+    public <T> T get(
+            URI uri,
+            Class<T> responseType,
+            String headerName,
+            String headerValue) {
+        return restClient.get()
+                .uri(uri)
+                .header(headerName, headerValue)
+                .retrieve()
+                .body(responseType);
+    }
 }

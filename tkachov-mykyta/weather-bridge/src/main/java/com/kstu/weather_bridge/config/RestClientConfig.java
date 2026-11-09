@@ -16,7 +16,7 @@ public class RestClientConfig {
     }
 
     @Bean
-    public RestClient openWeatherRestClient() {
+    public RestClient metNorwayRestClient() {
         return RestClient.builder()
                 .baseUrl("https://api.openweathermap.org")
                 .build();
@@ -29,8 +29,8 @@ public class RestClientConfig {
     }
 
     @Bean
-    public ApiClient openWeatherApiClient(
-            @Qualifier("openWeatherRestClient") RestClient restClient) {
+    public ApiClient metNorwayApiClient(
+            @Qualifier("metNorwayRestClient") RestClient restClient) {
         return new ApiClient(restClient);
     }
 }
