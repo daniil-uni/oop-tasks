@@ -10,7 +10,7 @@ public class LineEditCreator extends WidgetCreator {
 
     @Override
     public Widget create(String text) {
-        System.out.println(text);
+        IO.println(text);
         Widget widget = new Widget("Line Edit");
         style.apply(widget);
         return widget;

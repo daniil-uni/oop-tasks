@@ -10,7 +10,7 @@ public class LabelCreator extends WidgetCreator {
 
     @Override
     public Widget create(String text) {
-        System.out.println(text);
+        IO.println(text);
         Widget widget = new Widget("Label");
         style.apply(widget);
         return widget;

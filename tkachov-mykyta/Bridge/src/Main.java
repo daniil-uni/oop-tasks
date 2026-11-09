@@ -6,17 +6,15 @@ import styles.GreenStyle;
 import styles.WidgetStyle;
 import widget.Widget;
 
-public class Main {
-    public static void main(String[] args) {
-        WidgetStyle greenStyle = new GreenStyle();
-        WidgetCreator buttonCreator = new ButtonCreator(greenStyle);
+void main() {
+    WidgetStyle greenStyle = new GreenStyle();
+    WidgetCreator buttonCreator = new ButtonCreator(greenStyle);
 
-        Widget button = buttonCreator.create("Creating button");
+    Widget button = buttonCreator.create("Creating button");
 
-        WidgetStyle darkStyle = new DarkStyle();
-        WidgetCreator labelCreator = new LabelCreator(darkStyle);
+    WidgetStyle darkStyle = new DarkStyle();
+    WidgetCreator labelCreator = new LabelCreator(darkStyle);
 
-        Widget label = labelCreator.create("Creating label");
-        label.display();
-    }
+    Widget label = labelCreator.create("Creating label");
+    label.display();
 }

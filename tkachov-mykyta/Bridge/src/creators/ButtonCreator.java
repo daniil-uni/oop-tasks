@@ -10,7 +10,7 @@ public class ButtonCreator extends WidgetCreator {
 
     @Override
     public Widget create(String text) {
-        System.out.println(text);
+        IO.println(text);
         Widget widget = new Widget("Button");
         style.apply(widget);
         return widget;
