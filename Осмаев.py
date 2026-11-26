@@ -1,81 +1,123 @@
-class Book:
-    def __init__(self, title, author):
-        self.title = title
-        self.author = author
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+
+@dataclass
+class Query:
+    table: str
+    columns: list[str] = field(default_factory=lambda: ['*'])
+    conditions: list[str] = field(default_factory=list)
+    order: str | None = None
+    limit: int | None = None
+
+    def to_sql(self) -> str:
+        sql = f"SELECT {', '.join(self.columns)} FROM {self.table}"
+        if self.conditions:
+            sql += ' WHERE ' + ' AND '.join(self.conditions)
+        if self.order:
+            sql += f' ORDER BY {self.order}'
+        if self.limit is not None:
+            sql += f' LIMIT {self.limit}'
+        return sql + ';'
 
 
-class Library:
+class QueryBuilder(ABC):
+    @abstractmethod
+    def select(self, *columns: str): ...
+    @abstractmethod
+    def from_table(self, table: str): ...
+    @abstractmethod
+    def where(self, condition: str): ...
+    @abstractmethod
+    def order_by(self, column: str): ...
+    @abstractmethod
+    def limit(self, n: int): ...
+    @abstractmethod
+    def build(self) -> Query: ...
+
+#--здесь мой код
+
+class SqlQueryBuilder(QueryBuilder):
     def __init__(self):
-        self.books = []
+        self.reset()
 
-    def add_book(self, book):
-        self.books.append(book)
-        print("Книга добавлена в библиотеку")
+    def reset(self):
+        self.table = None
+        self.columns = ['*']
+        self.conditions = []
+        self.order = None
+        self.limit_val = None
 
-    def lend_book(self, title):
-        for b in self.books:
-            if b.title == title:
-                self.books.remove(b)
-                print(f"Книга '{b.title}' выдана читателю")
-                return b
-        print("Такой книги нет")
+    def select(self, *columns: str):
+        self.columns = list(columns)
+        return self
 
+    def from_table(self, table: str):
+        self.table = table
+        return self
 
-b1 = Book("Мастер и Маргарита", "Булгаков")
-lib = Library()
-lib.add_book(b1)
-lib.lend_book("Мастер и Маргарита")
+    def where(self, condition: str):
+        self.conditions.append(condition)
+        return self
 
+    def order_by(self, column: str):
+        self.order = column
+        return self
 
-class Device:
-    def __init__(self, model, power):
-        self.__model = model
-        self._power = power
+    def limit(self, n: int):
+        self.limit_val = n
+        return self
 
-    def get_model(self):
-        return self.__model
-
-    def turn_on(self):
-        print("Устройство включено")
-
-
-class Computer(Device):
-    def turn_on(self):
-        print("Компьютер включен")
-
-    def display_info(self):
-        print("Модель компьютера:", self.get_model(), "Мощность:", self._power)
-
-    def calculate_time(self):
-        return self._power * 5
+    def build(self) -> Query:
+        if not self.table:
+            self.reset()
+            raise ValueError('не указана таблица')
+        q = Query(self.table, self.columns, self.conditions, self.order, self.limit_val)
+        self.reset()
+        return q
 
 
-class Printer(Device):
-    def __init__(self, model, power, speed):
-        super().__init__(model, power)
-        self.speed = speed
-
-    def turn_on(self):
-        print("Принтер включен")
-
-    def display_info(self):
-        print("Модель принтера:", self.get_model(), "Скорость печати:", self.speed)
-
-    def calculate_time(self):
-        return self._power / 2
-
-
-class OfficeDevice(Computer, Printer):
-    def __init__(self, model, power, speed):
-        Device.__init__(self, model, power)
-        self.speed = speed
+class QueryDirector:
+    def active_users(self, builder):
+        return (
+            builder
+            .select('id', 'name')
+            .from_table('users')
+            .where('active = 1')
+            .where('age >= 18')
+            .order_by('name')
+            .limit(10)
+            .build()
+        )
 
 
-dev = OfficeDevice("HP LaserJet", 400, 30)
-dev.display_info()
-print("Время работы:", dev.calculate_time())
+if __name__ == '__main__':
+    b = SqlQueryBuilder()
+    print(b.from_table('products').build().to_sql())
+    print(QueryDirector().active_users(b).to_sql())
+    try:
+        b.select('id').build()
+    except ValueError as e:
+        print('Ошибка:', e)
 
-Computer.turn_on(dev)
 
-print(dev.get_model)
-print("Порядок классов:", OfficeDevice.mro())
+from PyQt6.QtGui import QPainter
+from PyQt6.QtWidgets import QWidget
+
+class Canvas(QWidget):
+    def __init__(self, shapes: list[dict]):
+        super().__init__()
+        self.shapes = shapes
+
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        for s in self.shapes:
+            if s['type'] == 'circle':
+                painter.drawEllipse(s['x'], s['y'], s['r'] * 2, s['r'] * 2)
+            elif s['type'] == 'rect':
+                painter.drawRect(s['x'], s['y'], s['w'], s['h'])
+            elif s['type'] == 'line':
+                painter.drawLine(s['x1'], s['y1'], s['x2'], s['y2'])
+            elif s['type'] == 'triangle':
+                painter.drawLine(s['x1'], s['y1'], s['x2'], s['y2'])
+                painter.drawLine(s['x2'], s['y2'], s['x3'], s['y3'])
+                painter.drawLine(s['x3'], s['y3'], s['x1'], s['y1'])
