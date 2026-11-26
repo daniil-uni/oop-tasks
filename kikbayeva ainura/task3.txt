@@ -1,0 +1,62 @@
+class Truck:
+	speed = 80
+	def deliver(self, cargo : str) -> str:
+		return f'Грузовик везёт "{cargo}" по дороге'
+
+class Ship:
+	speed = 30
+	def deliver(self, cargo : str) -> str:
+		return f'Корабль везёт "{cargo}" по морю'
+
+class Plane:
+	speed = 800
+	def deliver(self, cargo : str) -> str:
+		return f'Самолет везёт "{cargo}" по воздуху'
+
+class Logistics:
+	def create_transport(self):
+		raise NotImplentedError
+
+	def plan_delivery(self, cargo : str, distance_km : int) -> str:
+		transport = self.create_transport()
+		hours = distance_km / transport.speed
+		return f'{transport.deliver(cargo), в пути {hours :. 1f} ч'
+
+class RoadLogistics(Logistics):
+	def create_transport(self):
+		return Truck()
+
+class SeaLogistics(Logistics):
+	def create_transport(self):
+        	return Ship()
+
+class AirLogistics(Logistics):
+	def create_transport(self):
+        	return Plane()
+
+def get_logistics(kind):
+	if kind == 'road':
+		return RoadLogisticks
+
+	elif kind == 'sea':
+		return SeaLogisticks
+
+	elif kind == 'air':
+		return AirLogisticks
+
+	else:
+		raise ValueError(
+			f'Ошибка: неизвестный вид логистики : {kind}' )
+
+if __name__ == '__main__':
+	for kind in ('road', 'sea', 'air'):
+		print(get_logistics(kind).plan_delivery('Мебель', 2400))
+	try:
+		get_logistics('train')
+	except ValueError as e:
+		print('Ошибка:', e)
+
+
+
+# Задание 2:
+# Нарушен принцип Single Responsibility, так как класс выполняет много задач сразу, и лучше было бы "распределить ответственность" на несколько классов
